@@ -1,2 +1,9 @@
 @import 'bootstrap';
 @import 'bootstrap-icons';
+
+
+.active {
+  font-size: 18px;
+  color: red !important;
+  background-color: blue !important;
+}

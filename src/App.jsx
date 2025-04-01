@@ -15,7 +15,6 @@ function App() {
             <Route index Component={Home} />
             <Route path="/chiSiamo" Component={ChiSiamo} />
             <Route path="/posts" Component={Posts} />
-
           </Route>
         </Routes>
       </BrowserRouter>
