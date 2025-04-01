@@ -16,7 +16,7 @@ export default function Header() {
                     </li>
                     <li className="nav-item">
                         <NavLink
-                            to="/chi_siamo"
+                            to="/chiSiamo"
                             className="nav-link"
                             data-bs-toggle="tab">
                             Chi siamo

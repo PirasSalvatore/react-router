@@ -1,10 +1,9 @@
-import { NavLink } from "react-router-dom";
-
-export default function Home() {
+export default function ChiSiamo() {
 
     return (
         <>
             <main>
+
                 <div class="p-5 mb-4 bg-light rounded-3">
                     <div class="container-fluid py-5">
                         <h1 class="display-5 fw-bold">Boolean Blog</h1>
@@ -13,9 +12,6 @@ export default function Home() {
                             like the one in previous versions of Bootstrap. Check out the
                             examples below for how you can remix and restyle it to your liking.
                         </p>
-                        <NavLink class="btn btn-primary btn-lg" to='/posts'>
-                            Guarda i tuoi Post
-                        </NavLink>
                     </div>
                 </div>
 
@@ -24,7 +20,7 @@ export default function Home() {
                         <div className="col">
                             <div className="card">
                                 <div className="card-header">
-                                    <h1> guarda quanto è bello il nostro blog</h1>
+                                    <h1>CHI SIMAO?</h1>
                                 </div>
                                 <div className="card-body">
                                     <p>
