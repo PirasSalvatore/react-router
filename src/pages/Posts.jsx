@@ -1,4 +1,26 @@
+import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
+
+
 export default function Posts() {
+
+    const [postsList, setPostsList] = useState([{
+        id: '',
+        title: '',
+        slug: '',
+        content: '',
+        image: '',
+        tags: ['']
+    }])
+
+    useEffect(() => {
+
+        fetch('http://localhost:3000/api/v1/posts')
+            .then(res => res.json())
+            .then(data => setPostsList(data))
+            .catch(err => console.error(err))
+
+    }, [])
 
     return (
         <>
@@ -16,97 +38,32 @@ export default function Posts() {
                 </div>
 
                 <div className="container">
-                    <div className="row row-cols-md-3 row-cols-lg-5">
-                        <div className="col">
-                            <div className="card">
-                                <div className="card-header">
-                                    <h1>Post</h1>
-                                </div>
-                                <div className="card-body">
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa qui aliquam temporibus eaque nobis maiores, dignissimos incidunt at, quia autem cupiditate a, laborum quam beatae fugit possimus doloribus libero dicta!
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                    <div className="row row-cols-md-3 row-cols-lg-5 gap-4">
+                        {
+                            postsList.map((post) => {
+                                return (
+                                    <div key={`post-${post.id}`} className="card mb-3" >
+                                        <div className="row g-0">
+                                            <div className="col-md-4">
+                                                <img src={`http://localhost:3000${post.image}`} className="img-fluid rounded-start" alt={post.title} />
+                                            </div>
+                                            <div className="col-md-8">
+                                                <div className="card-body">
+                                                    <h5 className="card-title">{post.title}</h5>
+                                                    <p className="card-text">{post.content.substring(0, 30) + '....'}</p>
+                                                    <Link to={`/post/${post.slug}`}>
+                                                        <button className="btn btn-primary">
+                                                            Guarda
+                                                        </button>
+                                                    </Link>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
 
-                        <div className="col">
-                            <div className="card">
-                                <div className="card-header">
-                                    <h1>Post</h1>
-                                </div>
-                                <div className="card-body">
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa qui aliquam temporibus eaque nobis maiores, dignissimos incidunt at, quia autem cupiditate a, laborum quam beatae fugit possimus doloribus libero dicta!
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="col">
-                            <div className="card">
-                                <div className="card-header">
-                                    <h1>Post</h1>
-                                </div>
-                                <div className="card-body">
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa qui aliquam temporibus eaque nobis maiores, dignissimos incidunt at, quia autem cupiditate a, laborum quam beatae fugit possimus doloribus libero dicta!
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="col">
-                            <div className="card">
-                                <div className="card-header">
-                                    <h1>Post</h1>
-                                </div>
-                                <div className="card-body">
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa qui aliquam temporibus eaque nobis maiores, dignissimos incidunt at, quia autem cupiditate a, laborum quam beatae fugit possimus doloribus libero dicta!
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="col">
-                            <div className="card">
-                                <div className="card-header">
-                                    <h1>Post</h1>
-                                </div>
-                                <div className="card-body">
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa qui aliquam temporibus eaque nobis maiores, dignissimos incidunt at, quia autem cupiditate a, laborum quam beatae fugit possimus doloribus libero dicta!
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="col">
-                            <div className="card">
-                                <div className="card-header">
-                                    <h1>Post</h1>
-                                </div>
-                                <div className="card-body">
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa qui aliquam temporibus eaque nobis maiores, dignissimos incidunt at, quia autem cupiditate a, laborum quam beatae fugit possimus doloribus libero dicta!
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="col">
-                            <div className="card">
-                                <div className="card-header">
-                                    <h1>Post</h1>
-                                </div>
-                                <div className="card-body">
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa qui aliquam temporibus eaque nobis maiores, dignissimos incidunt at, quia autem cupiditate a, laborum quam beatae fugit possimus doloribus libero dicta!
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
